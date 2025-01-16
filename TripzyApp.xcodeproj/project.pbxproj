@@ -1,0 +1,633 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F25C89A2D2AA47A009C1D4E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0F25C8992D2AA47A009C1D4E /* FirebaseAnalytics */; };
+		0F25C89C2D2AA47A009C1D4E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0F25C89B2D2AA47A009C1D4E /* FirebaseAuth */; };
+		0F25C89E2D2AA47A009C1D4E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0F25C89D2D2AA47A009C1D4E /* FirebaseDatabase */; };
+		0F25C8A02D2AA47A009C1D4E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0F25C89F2D2AA47A009C1D4E /* FirebaseFirestore */; };
+		0F25C8A22D2AA47A009C1D4E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0F25C8A12D2AA47A009C1D4E /* FirebaseStorage */; };
+		0F53D7592D2C2DFC00184590 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0F53D7582D2C2DFC00184590 /* FirebaseAnalytics */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0FBD9C762CC6C74C00920C1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0FBD9C5D2CC6C74A00920C1C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FBD9C642CC6C74A00920C1C;
+			remoteInfo = TripzyApp;
+		};
+		0FBD9C802CC6C74D00920C1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0FBD9C5D2CC6C74A00920C1C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FBD9C642CC6C74A00920C1C;
+			remoteInfo = TripzyApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0FBD9C652CC6C74A00920C1C /* TripzyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripzyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FBD9C752CC6C74C00920C1C /* TripzyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripzyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FBD9C7F2CC6C74D00920C1C /* TripzyAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripzyAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0FBD9C672CC6C74A00920C1C /* TripzyApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TripzyApp;
+			sourceTree = "<group>";
+		};
+		0FBD9C782CC6C74C00920C1C /* TripzyAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TripzyAppTests;
+			sourceTree = "<group>";
+		};
+		0FBD9C822CC6C74D00920C1C /* TripzyAppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TripzyAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0FBD9C622CC6C74A00920C1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F25C89E2D2AA47A009C1D4E /* FirebaseDatabase in Frameworks */,
+				0F25C8A02D2AA47A009C1D4E /* FirebaseFirestore in Frameworks */,
+				0F25C89A2D2AA47A009C1D4E /* FirebaseAnalytics in Frameworks */,
+				0F25C8A22D2AA47A009C1D4E /* FirebaseStorage in Frameworks */,
+				0F25C89C2D2AA47A009C1D4E /* FirebaseAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FBD9C722CC6C74C00920C1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F53D7592D2C2DFC00184590 /* FirebaseAnalytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FBD9C7C2CC6C74D00920C1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0FBD9C5C2CC6C74A00920C1C = {
+			isa = PBXGroup;
+			children = (
+				0FBD9C672CC6C74A00920C1C /* TripzyApp */,
+				0FBD9C782CC6C74C00920C1C /* TripzyAppTests */,
+				0FBD9C822CC6C74D00920C1C /* TripzyAppUITests */,
+				0FBD9C662CC6C74A00920C1C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0FBD9C662CC6C74A00920C1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0FBD9C652CC6C74A00920C1C /* TripzyApp.app */,
+				0FBD9C752CC6C74C00920C1C /* TripzyAppTests.xctest */,
+				0FBD9C7F2CC6C74D00920C1C /* TripzyAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0FBD9C642CC6C74A00920C1C /* TripzyApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FBD9C892CC6C74D00920C1C /* Build configuration list for PBXNativeTarget "TripzyApp" */;
+			buildPhases = (
+				0FBD9C612CC6C74A00920C1C /* Sources */,
+				0FBD9C622CC6C74A00920C1C /* Frameworks */,
+				0FBD9C632CC6C74A00920C1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0FBD9C672CC6C74A00920C1C /* TripzyApp */,
+			);
+			name = TripzyApp;
+			packageProductDependencies = (
+				0F25C8992D2AA47A009C1D4E /* FirebaseAnalytics */,
+				0F25C89B2D2AA47A009C1D4E /* FirebaseAuth */,
+				0F25C89D2D2AA47A009C1D4E /* FirebaseDatabase */,
+				0F25C89F2D2AA47A009C1D4E /* FirebaseFirestore */,
+				0F25C8A12D2AA47A009C1D4E /* FirebaseStorage */,
+			);
+			productName = TripzyApp;
+			productReference = 0FBD9C652CC6C74A00920C1C /* TripzyApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0FBD9C742CC6C74C00920C1C /* TripzyAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FBD9C8C2CC6C74D00920C1C /* Build configuration list for PBXNativeTarget "TripzyAppTests" */;
+			buildPhases = (
+				0FBD9C712CC6C74C00920C1C /* Sources */,
+				0FBD9C722CC6C74C00920C1C /* Frameworks */,
+				0FBD9C732CC6C74C00920C1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0FBD9C772CC6C74C00920C1C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0FBD9C782CC6C74C00920C1C /* TripzyAppTests */,
+			);
+			name = TripzyAppTests;
+			packageProductDependencies = (
+				0F53D7582D2C2DFC00184590 /* FirebaseAnalytics */,
+			);
+			productName = TripzyAppTests;
+			productReference = 0FBD9C752CC6C74C00920C1C /* TripzyAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0FBD9C7E2CC6C74D00920C1C /* TripzyAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FBD9C8F2CC6C74D00920C1C /* Build configuration list for PBXNativeTarget "TripzyAppUITests" */;
+			buildPhases = (
+				0FBD9C7B2CC6C74D00920C1C /* Sources */,
+				0FBD9C7C2CC6C74D00920C1C /* Frameworks */,
+				0FBD9C7D2CC6C74D00920C1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0FBD9C812CC6C74D00920C1C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0FBD9C822CC6C74D00920C1C /* TripzyAppUITests */,
+			);
+			name = TripzyAppUITests;
+			packageProductDependencies = (
+			);
+			productName = TripzyAppUITests;
+			productReference = 0FBD9C7F2CC6C74D00920C1C /* TripzyAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0FBD9C5D2CC6C74A00920C1C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					0FBD9C642CC6C74A00920C1C = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					0FBD9C742CC6C74C00920C1C = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 0FBD9C642CC6C74A00920C1C;
+					};
+					0FBD9C7E2CC6C74D00920C1C = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 0FBD9C642CC6C74A00920C1C;
+					};
+				};
+			};
+			buildConfigurationList = 0FBD9C602CC6C74A00920C1C /* Build configuration list for PBXProject "TripzyApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0FBD9C5C2CC6C74A00920C1C;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0F5038AE2CD0F6D400890808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 0FBD9C662CC6C74A00920C1C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0FBD9C642CC6C74A00920C1C /* TripzyApp */,
+				0FBD9C742CC6C74C00920C1C /* TripzyAppTests */,
+				0FBD9C7E2CC6C74D00920C1C /* TripzyAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0FBD9C632CC6C74A00920C1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FBD9C732CC6C74C00920C1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FBD9C7D2CC6C74D00920C1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0FBD9C612CC6C74A00920C1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FBD9C712CC6C74C00920C1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FBD9C7B2CC6C74D00920C1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0FBD9C772CC6C74C00920C1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FBD9C642CC6C74A00920C1C /* TripzyApp */;
+			targetProxy = 0FBD9C762CC6C74C00920C1C /* PBXContainerItemProxy */;
+		};
+		0FBD9C812CC6C74D00920C1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FBD9C642CC6C74A00920C1C /* TripzyApp */;
+			targetProxy = 0FBD9C802CC6C74D00920C1C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0FBD9C872CC6C74D00920C1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0FBD9C882CC6C74D00920C1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0FBD9C8A2CC6C74D00920C1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TripzyApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Assignment.TripzyApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0FBD9C8B2CC6C74D00920C1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TripzyApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Assignment.TripzyApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0FBD9C8D2CC6C74D00920C1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Assignment.TripzyAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TripzyApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TripzyApp";
+			};
+			name = Debug;
+		};
+		0FBD9C8E2CC6C74D00920C1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Assignment.TripzyAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TripzyApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TripzyApp";
+			};
+			name = Release;
+		};
+		0FBD9C902CC6C74D00920C1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Assignment.TripzyAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TripzyApp;
+			};
+			name = Debug;
+		};
+		0FBD9C912CC6C74D00920C1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Assignment.TripzyAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TripzyApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FBD9C602CC6C74A00920C1C /* Build configuration list for PBXProject "TripzyApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FBD9C872CC6C74D00920C1C /* Debug */,
+				0FBD9C882CC6C74D00920C1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FBD9C892CC6C74D00920C1C /* Build configuration list for PBXNativeTarget "TripzyApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FBD9C8A2CC6C74D00920C1C /* Debug */,
+				0FBD9C8B2CC6C74D00920C1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FBD9C8C2CC6C74D00920C1C /* Build configuration list for PBXNativeTarget "TripzyAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FBD9C8D2CC6C74D00920C1C /* Debug */,
+				0FBD9C8E2CC6C74D00920C1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FBD9C8F2CC6C74D00920C1C /* Build configuration list for PBXNativeTarget "TripzyAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FBD9C902CC6C74D00920C1C /* Debug */,
+				0FBD9C912CC6C74D00920C1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0F5038AE2CD0F6D400890808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0F25C8992D2AA47A009C1D4E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F5038AE2CD0F6D400890808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		0F25C89B2D2AA47A009C1D4E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F5038AE2CD0F6D400890808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0F25C89D2D2AA47A009C1D4E /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F5038AE2CD0F6D400890808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		0F25C89F2D2AA47A009C1D4E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F5038AE2CD0F6D400890808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		0F25C8A12D2AA47A009C1D4E /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F5038AE2CD0F6D400890808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		0F53D7582D2C2DFC00184590 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F5038AE2CD0F6D400890808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 0FBD9C5D2CC6C74A00920C1C /* Project object */;
+}
