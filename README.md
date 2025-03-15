@@ -21,7 +21,7 @@ CoreData – Local data persistence
 Clone the repository: git clone https://github.com/Subham7481/Tripzy.git
 
 
-3️⃣ Set up Firebase:
+Set up Firebase:
 Go to Firebase Console
 Create a new project
 Add an iOS app and download the GoogleService-Info.plist file
