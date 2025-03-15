@@ -3,11 +3,9 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject var viewModel = LoginViewViewModel()
-    @ObservedObject var viewModell = MainViewViewModel()
-    var onLoginSuccess: (() -> Void)?
+    @State private var navigateToHome = false
+    @State private var isLoading = false
     var body: some View {
-        NavigationView
-        {
             VStack{
                 HStack{
                     Text("Sign In")
@@ -39,21 +37,35 @@ struct LoginView: View {
                         }
                         
                         Button(action: {
+                            isLoading = true
                             viewModel.login { success in
+                                isLoading = false
                                     if success {
-                                        viewModell.isLoggedIn = true
+                                        navigateToHome = true
                                         Text("Login successful")
                                     } else {
                                         print(viewModel.errorMessage)
                                     }
                             }
                         }, label: {
-                            Text("Log In")
+                            if isLoading {
+                                ProgressView() // Show the loader
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                 .frame(width: 330, height: 50)
                                 .background(Color.green)
-                                .foregroundColor(Color.white)
                                 .cornerRadius(10)
+                            } else {
+                                Text("Log In")
+                                    .frame(width: 330, height: 50)
+                                    .background(Color.green)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(10)
+                            }
                         })
+                        .disabled(isLoading)
+                        .background(
+                            NavigationLink("", destination: HomeView(), isActive: $navigateToHome)
+                        )
                     }
                 }
                 VStack{
@@ -84,7 +96,6 @@ struct LoginView: View {
                                 .frame(width: 47, height: 47)
                                 .cornerRadius(22)
                                 .padding()
-                        }
                     }
                 }
             }

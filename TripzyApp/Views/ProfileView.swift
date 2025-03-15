@@ -77,211 +77,209 @@ struct ProfileView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Profile")
-                    .font(.headline)
-                    .padding(.horizontal, 40)
-                Spacer()
-            }.padding(.top, 50)
-            
             VStack {
-                ZStack {
-                    // Profile Image Circle
-                    (viewModel.profileImage != nil ?
-                        Image(uiImage: viewModel.profileImage!) :
-                        Image(systemName: "person.circle"))
+                HStack {
+                    Text("Profile")
+                        .font(.headline)
+                        .padding()
+                    Spacer()
+                }
+            }
+            ScrollView{
+                VStack {
+                    ZStack {
+                        // Profile Image Circle
+                        (viewModel.profileImage != nil ?
+                         Image(uiImage: viewModel.profileImage!) :
+                            Image(systemName: "person.circle"))
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
                         .clipShape(Circle())
+                        
                         .padding()
                         .onTapGesture {
                             showRemoveButton.toggle()
                         }
-
-                    // Camera Button
-                    Button(action: {
-                        showingImagePicker.toggle()
-                    }) {
-                        Image(systemName: "camera")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 25, height: 25)
-                            .padding(8)
-                            .background(Color.green)
-                            .clipShape(Circle())
-                            .foregroundColor(.black)
-                    }
-                    .position(x: 240, y: 95)
-
-                    // Remove Button
-                    if showRemoveButton {
+                        
+                        // Camera Button
                         Button(action: {
-                            viewModel.resetProfileImage()
-                            showRemoveButton = false
+                            showingImagePicker.toggle()
                         }) {
-                            Image(systemName: "x.circle.fill")
-                                .foregroundColor(.red)
-                                .font(.title)
-                                .padding(6)
+                            Image(systemName: "camera")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 25, height: 25)
+                                .padding(8)
+                                .background(Color.green)
+                                .clipShape(Circle())
+                                .foregroundColor(.black)
                         }
-                        .position(x: 120, y: 20)
-                    }
-                }
-
-                Spacer()
-            }
-            .navigationTitle("Profile")
-            .sheet(isPresented: $showingImagePicker) {
-                ImagePicker(image: $viewModel.profileImage, imageData: $viewModel.profileImageData)
-            }
-
-            TextField("Name", text: $viewModel.name)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(5)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray, lineWidth: 1)
-                )
-                .padding(.horizontal, 20)
-                .padding(.bottom, 10)
-
-            TextField("Email", text: $viewModel.email)
-                .padding()
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-                .textInputAutocapitalization(.never)
-                .background(Color.white)
-                .cornerRadius(5)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray, lineWidth: 1)
-                )
-                .padding(.horizontal, 20)
-                .padding(.bottom, 40)
-
-            // Mobile Number
-            VStack(spacing: 20) {
-                HStack(spacing: 10) {
-                    Menu {
-                        ForEach(countries) { country in
-                            Button {
-                                viewModel.selectedCountry = country
-                            } label: {
-                                HStack {
-                                    Text(country.flag)
-                                    Text("\(country.name) (\(country.code))")
-                                }
+                        .position(x: 240, y: 95)
+                        
+                        // Remove Button
+                        if showRemoveButton {
+                            Button(action: {
+                                viewModel.resetProfileImage()
+                                showRemoveButton = false
+                            }) {
+                                Image(systemName: "x.circle.fill")
+                                    .foregroundColor(.red)
+                                    .font(.title)
+                                    .padding(6)
                             }
+                            .position(x: 120, y: 20)
                         }
-                    } label: {
-                        HStack {
-                            Text(viewModel.selectedCountry.flag)
-                            Text(viewModel.selectedCountry.code)
-                                .font(.subheadline)
-                            Image(systemName: "chevron.down")
-                                .font(.caption)
-                        }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color.white)
-                        .cornerRadius(5)
                     }
-                    .frame(height: 40)
-
-                    TextField("Your Mob Number", text: $viewModel.phoneNumber)
-                        .keyboardType(.numberPad)
-                        .padding(.horizontal, 8)
-                        .frame(height: 40)
-                        .background(Color.white)
-                        .cornerRadius(5)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.gray, lineWidth: 1)
-                        )
                 }
-                .frame(height: 30)
-                .padding(.horizontal)
+                .sheet(isPresented: $showingImagePicker) {
+                    ImagePicker(image: $viewModel.profileImage, imageData: $viewModel.profileImageData)
+                }
                 
-                Spacer()
-            }
-            .padding()
-            .background(Color.white)
-            .cornerRadius(8)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray, lineWidth: 1)
-            )
-            .frame(maxWidth: 360)
-
-            // Gender Selection
-            VStack {
-                Menu {
-                    ForEach(genders, id: \.self) { gender in
-                        Button(gender) {
-                            viewModel.selectedGender = gender
-                        }
-                    }
-                } label: {
-                    HStack {
-                        Text(viewModel.selectedGender)
-                            .font(.system(size: 16))
-                            .foregroundColor(.black)
-                            .padding(.leading, 10)
-                            .frame(height: 25, alignment: .leading)
-
-                        Spacer()
-
-                        Image(systemName: "arrowtriangle.down.fill")
-                            .foregroundColor(.gray)
-                            .padding(.trailing, 10)
-                    }
+                TextField("Name", text: $viewModel.name)
                     .padding()
                     .background(Color.white)
-                    .cornerRadius(15)
+                    .cornerRadius(5)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-                    .frame(width: 360)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 10)
+                
+                TextField("Email", text: $viewModel.email)
+                    .padding()
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .textInputAutocapitalization(.never)
+                    .background(Color.white)
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 10)
+                
+                // Mobile Number
+                VStack(spacing: 20) {
+                    HStack(spacing: 10) {
+                        Menu {
+                            ForEach(countries) { country in
+                                Button {
+                                    viewModel.selectedCountry = country
+                                } label: {
+                                    HStack {
+                                        Text(country.flag)
+                                        Text("\(country.name) (\(country.code))")
+                                    }
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Text(viewModel.selectedCountry.flag)
+                                Text(viewModel.selectedCountry.code)
+                                    .font(.subheadline)
+                                Image(systemName: "chevron.down")
+                                    .font(.caption)
+                            }
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color.white)
+                            .cornerRadius(5)
+                        }
+                        .frame(height: 40)
+                        
+                        TextField("Your Mob Number", text: $viewModel.phoneNumber)
+                            .keyboardType(.numberPad)
+                            .padding(.horizontal, 8)
+                            .frame(height: 40)
+                            .background(Color.white)
+                            .cornerRadius(5)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
+                    }
+                    .frame(height: 30)
+                    .padding(.horizontal)
                 }
-                .padding(.top, 40)
-            }
-
-            // Address
-            TextField("Address", text: $viewModel.address)
                 .padding()
                 .background(Color.white)
-                .cornerRadius(5)
+                .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray, lineWidth: 1)
                 )
-                .padding(.horizontal, 20)
-                .padding(.top, 10)
-
-            Spacer()
-
-            // Save Details Button
-            Button(action: {
-                viewModel.saveProfileData()
-            }, label: {
-                Text("Save")
-                    .frame(width: 330, height: 50)
-                    .foregroundColor(.white)
-                    .background(.green)
-                    .cornerRadius(10)
+                .frame(maxWidth: 360)
+                
+                // Gender Selection
+                VStack {
+                    Menu {
+                        ForEach(genders, id: \.self) { gender in
+                            Button(gender) {
+                                viewModel.selectedGender = gender
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Text(viewModel.selectedGender)
+                                .font(.system(size: 16))
+                                .foregroundColor(.black)
+                                .padding(.leading, 10)
+                                .frame(height: 25, alignment: .leading)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "arrowtriangle.down.fill")
+                                .foregroundColor(.gray)
+                                .padding(.trailing, 10)
+                        }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(15)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                        .frame(width: 360)
+                    }
+                    .padding(.top, 10)
+                }
+                
+                // Address
+                TextField("Address", text: $viewModel.address)
                     .padding()
-            })
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.green, lineWidth: 1)
-                    .padding()
-            )
-            .padding(.bottom, 45)
-            .padding(.top, 30)
+                    .background(Color.white)
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+                    .padding(.horizontal, 20)
+                    .padding(.top, 10)
+                
+                // Save Details Button
+                Button(action: {
+                    viewModel.saveProfileData()
+                }, label: {
+                    Text("Save")
+                        .frame(width: 330, height: 50)
+                        .foregroundColor(.white)
+                        .background(.green)
+                        .cornerRadius(10)
+                        .padding()
+                })
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.green, lineWidth: 1)
+                        .padding()
+                )
+                .padding(.bottom, 45)
+                .padding(.top, 30)
+            }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

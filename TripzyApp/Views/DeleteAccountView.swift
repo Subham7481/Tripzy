@@ -4,7 +4,6 @@
 //
 //  Created by Subham Patel on 29/12/24.
 //
-
 import SwiftUI
 
 struct DeleteAccountView: View {

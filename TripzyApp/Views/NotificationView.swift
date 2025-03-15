@@ -21,6 +21,7 @@ struct NotificationView: View {
                 Spacer()
             }
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear {
             // Automatically dismiss welcome message after 3 seconds
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

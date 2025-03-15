@@ -1,91 +1,117 @@
 import SwiftUI
+import Firebase
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 class MainViewViewModel: ObservableObject {
+    @Published var user: User? = nil
     @Published var isLoggedIn: Bool = false
     @Published var isRegistered: Bool = false
-    @Published var userName: String = ""
-    @Published var userEmail: String = ""
+    @Published var userName: String = "Unknown"
+    @Published var userEmail: String = "Unknown"
     @Published var errorMessage: String = ""
+    @Published var isLoading: Bool = false  // Loading state
+    @Published var photoURL: URL?
+
+    
+    private let databaseRef = Database.database().reference()
+    private let storageRef = Storage.storage().reference()
 
     init() {
-        checkAuthentication()
+//        checkAuthentication()
+        fetchUserDetails()
     }
 
+    // Check if the user is logged in or not
     func checkAuthentication() {
-        if let user = Auth.auth().currentUser {
-            DispatchQueue.main.async {
-                self.isLoggedIn = true
-                self.checkRegistrationStatus(for: user.uid)
-            }
-        } else {
-            DispatchQueue.main.async {
-                self.isLoggedIn = false
-                self.isRegistered = false
-                self.clearUserData()
-            }
+           isLoggedIn = Auth.auth().currentUser != nil
+    }
+//    func checkAuthentication() {
+//        guard let user = Auth.auth().currentUser else {
+//            print("No user is logged in.")
+//            DispatchQueue.main.async {
+//                self.clearUserData()
+//            }
+//            return
+//        }
+//
+//        print("User is logged in with UID: \(user.uid)")
+//
+//        DispatchQueue.main.async {
+//            self.isLoggedIn = true
+//        }
+//
+//        // Ensure this is only called once
+//        checkRegistrationStatus(for: user.uid)
+//    }
+
+//    private func checkRegistrationStatus(for uid: String) {
+//        let db = Firestore.firestore()
+//
+//        db.collection("users").document(uid).getDocument { [weak self] document, error in
+//            guard let self = self else { return }
+//
+//            if let error = error {
+//                print("Error checking registration status: \(error.localizedDescription)")
+//                DispatchQueue.main.async {
+//                    self.isRegistered = false
+//                    self.clearUserData()
+//                }
+//                return
+//            }
+//
+//            if let document = document, document.exists {
+//                print("User is registered.")
+//                DispatchQueue.main.async {
+//                    self.isRegistered = true
+//                }
+//                self.fetchUserDetails(for: uid)
+//            } else {
+//                print("User is not registered.")
+//                DispatchQueue.main.async {
+//                    self.isRegistered = false
+//                    self.clearUserData()
+//                }
+//            }
+//        }
+//    }
+
+    //Fetch user details from firebase
+    func fetchUserDetails() {
+        if let currentUser = Auth.auth().currentUser {
+            user = currentUser
         }
     }
-
-    private func checkRegistrationStatus(for uid: String) {
-        let db = Firestore.firestore()
-        db.collection("users").document(uid).getDocument { [weak self] document, error in
-            if let document = document, document.exists {
-                self?.isRegistered = true
-                self?.fetchUserDetails(for: uid)
+    
+    //Fetch user profile
+    func fetchUserProfile() {
+            if let user = Auth.auth().currentUser {
+                DispatchQueue.main.async {
+                    self.photoURL = user.photoURL
+                    self.isLoading = false
+                }
             } else {
-                self?.isRegistered = false
-                self?.clearUserData()
+                self.isLoading = false
             }
         }
-    }
-
-    private func fetchUserDetails(for uid: String) {
-        let db = Firestore.firestore()
-        db.collection("users").document(uid).getDocument { [weak self] document, error in
-            if let error = error {
-                DispatchQueue.main.async {
-                    self?.errorMessage = "Error fetching user data: \(error.localizedDescription)"
-                }
-                return
-            }
-
-            if let data = document?.data() {
-                DispatchQueue.main.async {
-                    self?.userName = data["name"] as? String ?? "Unknown"
-                    self?.userEmail = data["email"] as? String ?? "Unknown"
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self?.clearUserData()
-                }
-            }
-        }
-    }
-
+    
+    // Clear the user data
     private func clearUserData() {
         userName = ""
         userEmail = ""
         errorMessage = ""
     }
 
-    func logout() {
-        if !isLoggedIn {
-            print("Logout called when already logged out.")
-            return
-        }
-
+    // Logout function to sign the user out
+    func logout(completion: @escaping (Bool) -> Void) {
         do {
             try Auth.auth().signOut()
-            DispatchQueue.main.async {
-                self.isLoggedIn = false
-                self.isRegistered = false
-                self.clearUserData()
-            }
+            completion(true) // Notify success
         } catch let error {
-            print("Error signing out: \(error.localizedDescription)")
+            print("Failed to log out: \(error.localizedDescription)")
+            completion(false) // Notify failure
         }
     }
 }

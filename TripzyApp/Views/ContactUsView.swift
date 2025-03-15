@@ -60,7 +60,7 @@ struct ContactUsView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-                    .padding(.bottom, 1)
+                    .padding(.bottom, 10)
                 
                 TextField("Email", text: $email)
                     .padding()
@@ -71,7 +71,7 @@ struct ContactUsView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-                    .padding(.bottom, 5)
+                    .padding(.bottom, 10)
                 
                 VStack(spacing: 20) {
                     HStack(spacing: 10) {
@@ -116,8 +116,6 @@ struct ContactUsView: View {
                     }
                     .frame(height: 30) // Consistent height for the entire HStack
                     .padding(.horizontal)
-                    
-                    Spacer()
                 }
                 .padding()
                 .background(Color.white)
@@ -128,7 +126,7 @@ struct ContactUsView: View {
                 )
                 .frame(maxWidth: 360)
                 .frame(maxHeight: 30)
-                .padding(.top, 28)
+                .padding(.top, 18)
                 
                 TextField("Write your text", text: $textMessage)
                     .frame(height: 100)
@@ -140,7 +138,7 @@ struct ContactUsView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-                    .padding(.top, 35)
+                    .padding(.top, 25)
                 
                 Button(action: {
                     // Save password action
@@ -162,3 +160,4 @@ struct ContactUsView: View {
 #Preview {
     ContactUsView()
 }
+

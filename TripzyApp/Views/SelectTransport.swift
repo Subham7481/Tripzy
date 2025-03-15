@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct SelectTransport: View {
-    
     let transportOptions = [
         ["image": "Car", "name": "Car"],
         ["image": "Bike", "name": "Bike"],
@@ -10,36 +9,51 @@ struct SelectTransport: View {
     ]
     
     var body: some View {
-//        NavigationStack {
-            VStack {
-                HStack{
-                    Text("Select Transport")
-                        .font(.headline)
-                        .padding(.top, 250)
-                    Spacer()
-                }.padding()
-                
-                Text("Select your transport")
-                    .font(.title)
-                    .padding(.top, 20)
-                
-                HStack {
-                    VStack {
-                        ForEach(0..<2) { index in
-                            TransportOptionView(transport: transportOptions[index])
-                        }
-                        .padding()
+        VStack {
+            // Header
+            HStack {
+                Text("Select Transport")
+                    .font(.headline)
+                    .padding(.top, 250)
+                Spacer()
+            }.padding()
+                .padding(.top, 50)
+            
+            // Title
+            Text("Select your transport")
+                .font(.title)
+                .padding(.top, 10)
+            
+            // Transport Options
+            HStack {
+                VStack {
+                    ForEach(0..<2) { index in
+                        TransportOptionView(transport: transportOptions[index])
                     }
-                    VStack {
-                        ForEach(2..<transportOptions.count) { index in
-                            TransportOptionView(transport: transportOptions[index])
-                        }
-                        .padding()
-                    }
+                    .padding()
                 }
-                .padding(.bottom, 400)
+                VStack {
+                    ForEach(2..<transportOptions.count) { index in
+                        TransportOptionView(transport: transportOptions[index])
+                    }
+                    .padding()
+                }
             }
-//        }
+            .padding(.bottom, 20)
+            
+            Spacer() // Pushes content to the top
+            
+            // Button
+            NavigationLink(destination: OfferView()) {
+                Text("Offers")
+                    .font(.headline)
+                    .foregroundColor(Color.white)
+                    .frame(width: 330, height: 50)
+                    .background(Color.green)
+                    .cornerRadius(10)
+            }
+            .padding(.bottom, 380) // Adds space below the button
+        }
     }
 }
 

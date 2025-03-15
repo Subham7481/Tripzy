@@ -26,9 +26,8 @@ struct OfferView: View {
                 Spacer()
             }
             VStack {
-                Spacer()
-                ForEach(offers) { index in
-                    ScrollView{
+                ScrollView{
+                    ForEach(offers) { index in
                         HStack {
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.white)
@@ -70,6 +69,7 @@ struct OfferView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

@@ -41,27 +41,6 @@ struct HomeView: View {
                     Text("View not found")
                 }
             }
-            // Custom Tab Bar
-//                HStack {
-//                    ForEach(0..<tabbaritems.count, id: \.self) { number in
-//                        Button(action: {
-//                            selectedTab = number
-//                        }) {
-//                            Image(systemName: tabbaritems[number].image)
-//                                .font(.system(size: 24))
-//                                .foregroundColor(selectedTab == number ? .green : .gray)
-//                                .scaleEffect(selectedTab == number ? 1.3 : 1.0)
-//                                .animation(.spring(), value: selectedTab)
-//                        }
-//                        .padding()
-//                        Spacer()
-//                    }
-//                }
-//            .padding()
-//            .background(Color.white)
-//            .clipShape(Capsule())
-//            .foregroundColor(Color.white)
-//            .shadow(radius: 5)
             HStack(spacing: 30) { // Adjust spacing between items
                 ForEach(tabbaritems.indices, id: \.self) { index in
                     Button(action: {
@@ -102,7 +81,6 @@ struct MainHomeView: View {
     @State private var isSidebarOpen = false
 
     var body: some View {
-        NavigationView {
             ZStack {
                 // Map view
                 Map(coordinateRegion: $region)
@@ -163,15 +141,6 @@ struct MainHomeView: View {
                                 .foregroundColor(.black)
                                 .padding(.leading, 10)
                             
-//                            Button(action: {
-//                                EnterLocation()
-//                            }, label: {
-//                                Text("Search Destination")
-//                                    .frame(width: 280, height: 60)
-//                                    .foregroundColor(.black)
-//                                    .disableAutocorrection(true)
-//                                    .padding(.horizontal, 10)
-//                            })
                             NavigationLink(destination: EnterLocation()) {
                                                Text("Search Destination")
                                                    .frame(width: 260, height: 60)
@@ -191,10 +160,9 @@ struct MainHomeView: View {
                         .padding(.bottom, 50)
                     }
                 }
-                .navigationBarBackButtonHidden(true)
                 .edgesIgnoringSafeArea(.bottom)
             }
-        }
+            .navigationBarBackButtonHidden(true)
     }
 }
 

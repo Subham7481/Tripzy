@@ -13,44 +13,49 @@ class ProfileViewViewModel: ObservableObject {
     @Published var selectedCountry: Country = Country(name: "India", code: "+91", flag: "🇮🇳")
     @Published var profileImage: UIImage? = UIImage(systemName: "person.circle")
     @Published var profileImageData: Data?
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
 
     private let databaseRef = Database.database().reference()
     private let storageRef = Storage.storage().reference()
 
     func saveProfileData() {
+        guard validateInputs() else { return }
         guard let userID = Auth.auth().currentUser?.uid else {
-            print("Error: User is not authenticated.")
+            handleError("Error: User is not authenticated.")
             return
         }
         
-        guard let profileImageData = profileImageData else {
-            print("Error: No profile image selected.")
-            saveProfileInfo(imageURL: nil, userID: userID) // Save data without an image
-            return
-        }
+        isLoading = true
         
-        uploadProfileImage(data: profileImageData, userID: userID)
+        if let profileImageData = profileImageData {
+            uploadProfileImage(data: profileImageData, userID: userID)
+        } else {
+            saveProfileInfo(imageURL: nil, userID: userID)
+        }
     }
     
-    // MARK: - Upload Image to Firebase Storage
     private func uploadProfileImage(data: Data, userID: String) {
-        let imagePath = "profile_images/\(UUID().uuidString).jpg"
+        let imagePath = "profile_images/\(userID).jpg"
         let imageRef = storageRef.child(imagePath)
         
         imageRef.putData(data, metadata: nil) { [weak self] metadata, error in
             if let error = error {
-                print("Error uploading image: \(error.localizedDescription)")
+                self?.handleError("Error uploading image: \(error.localizedDescription)")
+                self?.isLoading = false
                 return
             }
             
             imageRef.downloadURL { url, error in
                 if let error = error {
-                    print("Error retrieving image URL: \(error.localizedDescription)")
+                    self?.handleError("Error retrieving image URL: \(error.localizedDescription)")
+                    self?.isLoading = false
                     return
                 }
                 
                 guard let imageURL = url?.absoluteString else {
-                    print("Error: Image URL is nil.")
+                    self?.handleError("Error: Image URL is nil.")
+                    self?.isLoading = false
                     return
                 }
                 
@@ -69,17 +74,54 @@ class ProfileViewViewModel: ObservableObject {
             "profileImageURL": imageURL ?? ""
         ]
         
-        databaseRef.child("users").child(userID).setValue(profileData) { error, _ in
+        databaseRef.child("users").child(userID).setValue(profileData) { [weak self] error, _ in
+            self?.isLoading = false
             if let error = error {
-                print("Failed to save profile data: \(error.localizedDescription)")
+                self?.handleError("Failed to save profile data: \(error.localizedDescription)")
             } else {
+                self?.clearFields()
                 print("Profile data saved successfully.")
             }
         }
     }
     
+    private func handleError(_ error: String) {
+        print(error)
+        errorMessage = error
+    }
+    
+    private func validateInputs() -> Bool {
+        if name.isEmpty || email.isEmpty || address.isEmpty || phoneNumber.isEmpty {
+            handleError("All fields are required.")
+            return false
+        }
+        
+        if !isValidEmail(email) {
+            handleError("Invalid email address.")
+            return false
+        }
+        
+        return true
+    }
+    
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    private func clearFields() {
+        name = ""
+        email = ""
+        address = ""
+        phoneNumber = ""
+        selectedGender = "Male"
+        profileImage = UIImage(systemName: "person.circle")
+        profileImageData = nil
+    }
+    
     func resetProfileImage() {
-           profileImage = nil
-           profileImageData = nil
+        profileImage = nil
+        profileImageData = nil
     }
 }

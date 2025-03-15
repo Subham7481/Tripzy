@@ -1,25 +1,29 @@
 import SwiftUI
 
+// Custom Password Field with Toggle for Visibility
 struct PasswordFieldWithToggle: View {
     @Binding var password: String
     @State private var isPasswordVisible: Bool = false
-
     var placeholder: String
 
     var body: some View {
         HStack {
+            // Toggle between TextField and SecureField based on password visibility
             if isPasswordVisible {
                 TextField(placeholder, text: $password)
                     .padding()
                     .background(Color.white)
-                    .cornerRadius(5)
+                    .frame(width: 330, height: 70)
+                    .cornerRadius(10)
             } else {
                 SecureField(placeholder, text: $password)
                     .padding()
                     .background(Color.white)
-                    .cornerRadius(5)
+                    .frame(width: 330, height: 70)
+                    .cornerRadius(10)
             }
 
+            // Button to toggle password visibility
             Button(action: {
                 isPasswordVisible.toggle()
             }) {
@@ -37,9 +41,7 @@ struct PasswordFieldWithToggle: View {
 }
 
 struct ChangePasswordView: View {
-    @State private var oldPassword: String = ""
-    @State private var newPassword: String = ""
-    @State private var confirmPassword: String = ""
+    @StateObject private var viewModel = ChangePasswordViewModel()
 
     var body: some View {
         VStack {
@@ -52,17 +54,31 @@ struct ChangePasswordView: View {
             .padding()
             .padding(.bottom, 30)
 
-            PasswordFieldWithToggle(password: $oldPassword, placeholder: "Old Password")
+            // Password fields using the PasswordFieldWithToggle
+            PasswordFieldWithToggle(password: $viewModel.oldPassword, placeholder: "Old Password")
                 .padding(.bottom, 20)
 
-            PasswordFieldWithToggle(password: $newPassword, placeholder: "New Password")
+            PasswordFieldWithToggle(password: $viewModel.newPassword, placeholder: "New Password")
                 .padding(.bottom, 20)
 
-            PasswordFieldWithToggle(password: $confirmPassword, placeholder: "Confirm Password")
+            PasswordFieldWithToggle(password: $viewModel.confirmPassword, placeholder: "Confirm Password")
                 .padding(.bottom, 40)
 
+            // Display error message if any
+            if !viewModel.errorMessage.isEmpty {
+                Text(viewModel.errorMessage)
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 20)
+            }
+
+            // Save Button
             Button(action: {
-                // Save password action
+                viewModel.changePassword { success in
+                    if success {
+                        print("Password changed successfully.")
+                    }
+                }
             }, label: {
                 Text("Save")
                     .font(.headline)
@@ -75,6 +91,13 @@ struct ChangePasswordView: View {
             Spacer()
         }
         .padding()
+        .alert(isPresented: $viewModel.isPasswordChanged) {
+            Alert(
+                title: Text("Success"),
+                message: Text("Your password has been updated successfully."),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 }
 

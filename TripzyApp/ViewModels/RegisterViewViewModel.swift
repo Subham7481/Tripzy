@@ -2,13 +2,11 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 class RegisterViewViewModel: ObservableObject{
-//    @Published var name = ""
     @Published var email = ""
     @Published var password = ""
     @Published var phone = ""
     @Published var errorMessage = ""
     
-    init() {}
     func register() {
             guard validate() else {
                 return
@@ -34,20 +32,21 @@ class RegisterViewViewModel: ObservableObject{
         }
     
     private func insertUserRecord(id: String) {
-        let newUser = User(uid: id, email: email, phone: phone, joined: Date().timeIntervalSince1970)
-            
-            let db = Firestore.firestore()
-            db.collection("users")
-                .document(id)
-                .setData(newUser.asDictionary()) { [weak self] error in
-                    if let error = error {
-                        self?.errorMessage = "Failed to save user data: \(error.localizedDescription)"
-                    } else {
-                        // Optionally, handle successful registration (e.g., navigate to another screen)
-                        self?.errorMessage = ""
-                    }
+        let newUser = AppUser(uid: id, email: email, phone: phone, joined: Date().timeIntervalSince1970)
+
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(id)
+            .setData(newUser.asDictionary()) { [weak self] error in
+                if let error = error {
+                    self?.errorMessage = "Failed to save user data: \(error.localizedDescription)"
+                    print("Error storing user data: \(error.localizedDescription)")  // More detailed error logging
+                } else {
+                    self?.errorMessage = ""
+                    print("User data saved successfully!")
                 }
-        }
+            }
+    }
     private func validate() -> Bool {
            // Check if fields are empty
            guard !email.trimmingCharacters(in: .whitespaces).isEmpty,

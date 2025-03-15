@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct User: Codable{
+struct AppUser: Codable{
         var uid: String    //from firebase auth
 //        var name: String
         var email: String

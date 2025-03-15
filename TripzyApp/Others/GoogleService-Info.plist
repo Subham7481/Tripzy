@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyAu0f0FooAg-xh72RK3OuaElgIV-srn6B4</string>
+	<string>AIzaSyDUilJ0Kf9q87LSgo2oc-J-nJrKiJjVdyU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>626057763341</string>
+	<string>289126726891</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.Assignment.TripzyApp</string>
 	<key>PROJECT_ID</key>
-	<string>tripzyapp-bd90b</string>
+	<string>tripzy-9986e</string>
 	<key>STORAGE_BUCKET</key>
-	<string>tripzyapp-bd90b.firebasestorage.app</string>
+	<string>tripzy-9986e.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:626057763341:ios:769522466cb94d0e385344</string>
+	<string>1:289126726891:ios:4b3b35f0f38fb7df5192ae</string>
+	<key>DATABASE_URL</key>
+	<string>https://tripzy-9986e-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

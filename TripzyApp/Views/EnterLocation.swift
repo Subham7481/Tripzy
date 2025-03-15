@@ -10,16 +10,13 @@ struct EnterLocation: View {
     }
 
     var body: some View {
+        HStack {
+            Text("Select Address")
+                .font(.headline)
+                .padding(.horizontal, 10)
+            Spacer()
+        }.padding()
         VStack {
-            HStack {
-                Text("Select Address")
-                    .font(.headline)
-                    .padding(.horizontal, 10)
-                Spacer()
-            }
-
-            Form {
-                // From TextField with suggestions
                 VStack {
                     HStack {
                         Image(systemName: "dot.scope")
@@ -78,7 +75,7 @@ struct EnterLocation: View {
                                     .stroke(focusedField == .to ? Color.green : Color.black, lineWidth: 1)
                             )
                             .padding(.leading, 30)
-                    }
+                    }.padding()
 
                     // Suggestions List for "To" TextField
                     if focusedField == .to && !viewModel.locationSuggestions.isEmpty {
@@ -125,9 +122,8 @@ struct EnterLocation: View {
 
                 Spacer()
             }
+        .padding(.top, 20)
         }
-        .padding()
-    }
 }
 
 #Preview {
