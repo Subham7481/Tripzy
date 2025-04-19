@@ -13,6 +13,11 @@
 		0F25C8A02D2AA47A009C1D4E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0F25C89F2D2AA47A009C1D4E /* FirebaseFirestore */; };
 		0F25C8A22D2AA47A009C1D4E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0F25C8A12D2AA47A009C1D4E /* FirebaseStorage */; };
 		0F53D7592D2C2DFC00184590 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0F53D7582D2C2DFC00184590 /* FirebaseAnalytics */; };
+		0FEEAA562DB014160074CCA9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEEAA552DB014160074CCA9 /* CoreData.framework */; };
+		0FEEAA652DB0162D0074CCA9 /* DriverEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEAA632DB0162D0074CCA9 /* DriverEntity+CoreDataClass.swift */; };
+		0FEEAA662DB0162D0074CCA9 /* BookingEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEAA612DB0162D0074CCA9 /* BookingEntity+CoreDataClass.swift */; };
+		0FEEAA672DB0162D0074CCA9 /* BookingEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEAA622DB0162D0074CCA9 /* BookingEntity+CoreDataProperties.swift */; };
+		0FEEAA682DB0162D0074CCA9 /* DriverEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEAA642DB0162D0074CCA9 /* DriverEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 		0FBD9C652CC6C74A00920C1C /* TripzyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripzyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBD9C752CC6C74C00920C1C /* TripzyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripzyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBD9C7F2CC6C74D00920C1C /* TripzyAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripzyAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FEEAA552DB014160074CCA9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0FEEAA612DB0162D0074CCA9 /* BookingEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0FEEAA622DB0162D0074CCA9 /* BookingEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0FEEAA632DB0162D0074CCA9 /* DriverEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DriverEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0FEEAA642DB0162D0074CCA9 /* DriverEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DriverEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -61,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEEAA562DB014160074CCA9 /* CoreData.framework in Frameworks */,
 				0F25C89E2D2AA47A009C1D4E /* FirebaseDatabase in Frameworks */,
 				0F25C8A02D2AA47A009C1D4E /* FirebaseFirestore in Frameworks */,
 				0F25C89A2D2AA47A009C1D4E /* FirebaseAnalytics in Frameworks */,
@@ -90,9 +101,14 @@
 		0FBD9C5C2CC6C74A00920C1C = {
 			isa = PBXGroup;
 			children = (
+				0FEEAA612DB0162D0074CCA9 /* BookingEntity+CoreDataClass.swift */,
+				0FEEAA622DB0162D0074CCA9 /* BookingEntity+CoreDataProperties.swift */,
+				0FEEAA632DB0162D0074CCA9 /* DriverEntity+CoreDataClass.swift */,
+				0FEEAA642DB0162D0074CCA9 /* DriverEntity+CoreDataProperties.swift */,
 				0FBD9C672CC6C74A00920C1C /* TripzyApp */,
 				0FBD9C782CC6C74C00920C1C /* TripzyAppTests */,
 				0FBD9C822CC6C74D00920C1C /* TripzyAppUITests */,
+				0FEEAA542DB014160074CCA9 /* Frameworks */,
 				0FBD9C662CC6C74A00920C1C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +121,14 @@
 				0FBD9C7F2CC6C74D00920C1C /* TripzyAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0FEEAA542DB014160074CCA9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0FEEAA552DB014160074CCA9 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +284,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEEAA652DB0162D0074CCA9 /* DriverEntity+CoreDataClass.swift in Sources */,
+				0FEEAA662DB0162D0074CCA9 /* BookingEntity+CoreDataClass.swift in Sources */,
+				0FEEAA672DB0162D0074CCA9 /* BookingEntity+CoreDataProperties.swift in Sources */,
+				0FEEAA682DB0162D0074CCA9 /* DriverEntity+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

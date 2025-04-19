@@ -1,20 +1,32 @@
 import SwiftUI
 import CoreData
 
-struct PaymentView: View {
+struct ConfirmRideView: View {
     @State private var showContent = false
-    @Environment(\.managedObjectContext) private var viewContext
-
+    @State private var navigateToRideTracking: Bool = false
+    @Environment(\.managedObjectContext) private var context
+    @StateObject var viewModel = EnterLocationViewViewModel()
     var body: some View {
         VStack {
-            HStack {
-                Text("Confirm Ride")
-                    .font(.headline)
-                    .padding()
-                Spacer()
-            }
-            .padding()
-
+            HStack{
+                HStack {
+                    Text("Confirm Ride")
+                        .font(.headline)
+                        .padding()
+                    Spacer()
+                }
+                .padding()
+                
+                HStack{
+                    NavigationLink(destination: HomeView()){
+                        Image(systemName: "house")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color.blue)
+                    }
+                }
+            }.padding()
+                
             if showContent {
                 VStack {
                     ZStack {
@@ -37,22 +49,40 @@ struct PaymentView: View {
 
             Spacer()
 
-            Button(action: {
-//                saveRide(pickup: "Location A", dropoff: "Location B", fare: 10.0, status: "Confirmed")
+            Button("Confirm Ride") {
+                viewModel.saveToCoreData(context: context)
                 showContent = true
-            }) {
-                Text("Confirm Ride")
-                    .frame(width: 330, height: 50)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
-                    .padding()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    navigateToRideTracking = true
+                }
             }
+            .frame(width: 330, height: 50)
+            .background(Color.green)
+            .foregroundColor(.white)
+            .cornerRadius(12)
+            .padding()
+            
+            NavigationLink(destination: HomeView(), isActive: $navigateToRideTracking) {
+                EmptyView()
+            }
+//            Button(action: {
+//                showContent = true
+//
+//            }) {
+//                Text("Confirm Ride")
+//                    .frame(width: 330, height: 50)
+//                    .background(Color.green)
+//                    .foregroundColor(.white)
+//                    .cornerRadius(12)
+//                    .padding()
+//            }
             .padding()
         }
+        .animation(.easeOut, value: showContent)
     }
 }
 
 #Preview {
-    PaymentView()
+    ConfirmRideView()
 }

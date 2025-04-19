@@ -1,12 +1,13 @@
 import Foundation
 import Combine
-
+import CoreData
 class EnterLocationViewViewModel: ObservableObject {
     @Published var startLocation: String = ""
     @Published var endLocation: String = ""
     @Published var locationSuggestions: [String] = [] // Store location suggestions
-    @Published var calculatedAmount: Double? = nil
+    @Published var fareAmount: Double? = nil
     @Published var errorMessage: String? = nil
+    
 
     private var cancellables = Set<AnyCancellable>()
     private let hereAPIKey = "f1XQxM1L4gtxiqbQMUyRXMrS0bJEPmmgdbPmzKZICpQ"
@@ -42,8 +43,10 @@ class EnterLocationViewViewModel: ObservableObject {
     // Function to get coordinates for a location
     private func getCoordinates(for location: String, completion: @escaping (Position?) -> Void) {
         let encodedLocation = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let urlString = "https://geocode.search.hereapi.com/v1/geocode?q=Delhi&apiKey=f1XQxM1L4gtxiqbQMUyRXMrS0bJEPmmgdbPmzKZICpQ"
-        
+//        let urlString = "https://geocode.search.hereapi.com/v1/geocode?q=Delhi&apiKey=f1XQxM1L4gtxiqbQMUyRXMrS0bJEPmmgdbPmzKZICpQ"
+        let urlString = "https://geocode.search.hereapi.com/v1/geocode?q=\(encodedLocation)&apiKey=\(self.hereAPIKey)"
+
+        print("Fetching coordinates for: \(location)")
         guard let url = URL(string: urlString) else {
             completion(nil)
             return
@@ -64,8 +67,10 @@ class EnterLocationViewViewModel: ObservableObject {
             do {
                 let response = try JSONDecoder().decode(HerePlacesResponse.self, from: data)
                 if let firstPlace = response.items.first {
+                    print("Coordinates for \(location): \(firstPlace.position.lat), \(firstPlace.position.lng)")
                     completion(firstPlace.position)
                 } else {
+                    print("No coordinates found for \(location)")
                     completion(nil)
                 }
             } catch {
@@ -90,8 +95,9 @@ class EnterLocationViewViewModel: ObservableObject {
                 }
 
                 // Construct the URL for HERE Routing API with coordinates
-                let urlString = "https://router.hereapi.com/v8/routes?transportMode=car&origin=\(startCoordinates)&destination=\(endCoordinates)&apiKey=\(self.hereAPIKey)"
-                
+//                let urlString = "https://router.hereapi.com/v8/routes?transportMode=car&origin=\(startCoordinates)&destination=\(endCoordinates)&apiKey=\(self.hereAPIKey)"
+                let urlString = "https://router.hereapi.com/v8/routes?transportMode=car&origin=\(startCoordinates.lat),\(startCoordinates.lng)&destination=\(endCoordinates.lat),\(endCoordinates.lng)&apiKey=\(self.hereAPIKey)"
+
                 guard let url = URL(string: urlString) else {
                     completion(nil)
                     return
@@ -112,7 +118,7 @@ class EnterLocationViewViewModel: ObservableObject {
 
                     do {
                         let response = try JSONDecoder().decode(HereRoutingResponse.self, from: data)
-                        let distanceInMeters = response.routes.first?.sections.first?.summary.length ?? 0
+                        let distanceInMeters = response.routes.first?.sections.first?.summary?.length ?? 0
                         let distanceInKm = Double(distanceInMeters) / 1000.0 // Convert to kilometers
                         completion(distanceInKm)
                     } catch {
@@ -142,13 +148,29 @@ class EnterLocationViewViewModel: ObservableObject {
         calculateDistance(from: startLocation, to: endLocation) { [weak self] distance in
             DispatchQueue.main.async {
                 if let distance = distance {
-                    self?.calculatedAmount = self?.calculateFare(for: distance)
+                    self?.fareAmount = self?.calculateFare(for: distance)
                 } else {
                     self?.errorMessage = "Unable to calculate distance."
                 }
             }
         }
     }
+    
+    func saveToCoreData(context: NSManagedObjectContext) {
+        let newRide = BookingEntity(context: context)
+        newRide.startLocation = startLocation
+        newRide.endLocation = endLocation
+        newRide.fareAmount = fareAmount ?? 0.0
+        newRide.timeStamp = Date()
+        
+        do {
+            try context.save()
+            print("Saved ride to Core Data")
+        } catch {
+            print("Failed to save: \(error.localizedDescription)")
+        }
+    }
+
 }
 
 // MARK: - HERE API Response Models
@@ -175,9 +197,10 @@ struct Route: Codable {
 }
 
 struct Section: Codable {
-    let summary: Summary
+    let summary: Summary?
 }
 
 struct Summary: Codable {
-    let length: Int // Distance in meters
+    let length: Int? // Distance in meters
+    let duration: Double?
 }

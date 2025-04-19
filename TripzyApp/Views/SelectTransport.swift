@@ -14,12 +14,9 @@ struct SelectTransport: View {
             HStack {
                 Text("Select Transport")
                     .font(.headline)
-                    .padding(.top, 250)
                 Spacer()
-            }.padding()
-                .padding(.top, 50)
-            
-            // Title
+            }.padding(.horizontal)
+
             Text("Select your transport")
                 .font(.title)
                 .padding(.top, 10)
@@ -42,17 +39,6 @@ struct SelectTransport: View {
             .padding(.bottom, 20)
             
             Spacer() // Pushes content to the top
-            
-            // Button
-            NavigationLink(destination: OfferView()) {
-                Text("Offers")
-                    .font(.headline)
-                    .foregroundColor(Color.white)
-                    .frame(width: 330, height: 50)
-                    .background(Color.green)
-                    .cornerRadius(10)
-            }
-            .padding(.bottom, 380) // Adds space below the button
         }
     }
 }
@@ -72,7 +58,7 @@ struct TransportOptionView: View {
                     )
                 
                 VStack {
-                    NavigationLink(destination: BookingView(selectedImage: transport["image"]!)) {
+                    NavigationLink(destination: PaymentView(selectedImage: transport["image"]!)) {
                         Image(transport["image"]!)
                             .resizable()
                             .scaledToFit()

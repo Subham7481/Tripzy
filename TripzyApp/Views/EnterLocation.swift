@@ -114,7 +114,7 @@ struct EnterLocation: View {
                 NavigationLink("", destination: SelectTransport(), isActive: $isNavigating)
                     .hidden()
 
-                if let amount = viewModel.calculatedAmount {
+                if let amount = viewModel.fareAmount {
                     Text("Estimated Amount: ₹\(amount, specifier: "%.2f")")
                         .font(.headline)
                         .padding()

@@ -1,11 +1,10 @@
 import SwiftUI
 
-struct BookingView: View {
-    var selectedImage: String
+struct PaymentView: View {
+    @StateObject var viewModel = EnterLocationViewViewModel()
+    @State var selectedImage: String = "Car"
     @State var isPressed: Bool = false
     @State var isSelected: Bool = false
-//    @Binding var fromLocation: String
-//    @Binding var toLocation: String
     let paymentMethods = [
             (name: "UPI", image: "UPI"),
             (name: "Credit Card", image: "Ccard"),
@@ -19,29 +18,54 @@ struct BookingView: View {
                 .font(.title)
                 .padding()
             
-            //            Text("From: \(fromLocation)")
-            //                            .font(.headline)
-            //                            .padding()
-            //
-            //            Text("To: \(toLocation)")
-            //                            .font(.headline)
-            //                            .padding()
-            
-            Spacer()
+//            HStack{
+//                Text("From: \(viewModel.startLocation)")
+//                    .font(.headline)
+//                    .padding()
+//                Spacer()
+//            }.padding(.horizontal)
+//
+//            HStack{
+//                Text("To: \(viewModel.endLocation)")
+//                    .font(.headline)
+//                    .padding()
+//                Spacer()
+//            }.padding(.horizontal)
             
             //Payment method
 //            NavigationStack{
                 VStack{
                     Image(selectedImage)
                         .resizable()
-                        .frame(width: 160, height: 160)
+                        .frame(width: 150, height: 150)
                         .padding()
+                    //Payable Ammount and apply offer button
+                    HStack{
+                        Text("Pay ₹ \(viewModel.fareAmount ?? 0.0)")
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .frame(width: 165, height: 50)
+                            .background(Color.green.opacity(0.6))
+                            .cornerRadius(10)
+                        
+                        Spacer()
+                        
+                        NavigationLink(destination: OfferView()){
+                            Text("Apply Offer")
+                                .font(.system(size: 15, weight: .bold))
+                                .frame(width: 165, height: 50)
+                                .foregroundColor(Color.white)
+                                .background(Color.green)
+                                .cornerRadius(10)
+                        }
+                    }.padding(.horizontal, 25)
                     
-                    Spacer()
                     Text("Select payment method")
                         .font(.title2)
+//                        .padding()
                     ForEach(paymentMethods, id: \.name){ method in
-                        NavigationLink(destination: PaymentView()){
+                        NavigationLink(destination: ConfirmRideView()){
                             ZStack{
                                 Rectangle()
                                     .frame(width: 360, height: 60)
@@ -76,5 +100,5 @@ struct BookingView: View {
 }
 
 #Preview {
-    BookingView(selectedImage: "selectedImage")
+    PaymentView()
 }
