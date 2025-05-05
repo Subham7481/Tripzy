@@ -75,6 +75,7 @@ struct HomeView: View {
 // Subview for Main Home Content
 
 struct MainHomeView: View {
+    @StateObject var vm: EnterLocationViewViewModel = EnterLocationViewViewModel()
     @Binding var region: MKCoordinateRegion
     @Binding var search: String
     @Binding var isActive: Bool
@@ -141,7 +142,7 @@ struct MainHomeView: View {
                                 .foregroundColor(.black)
                                 .padding(.leading, 10)
                             
-                            NavigationLink(destination: EnterLocation()) {
+                            NavigationLink(destination: EnterLocation().environmentObject(vm)) {
                                                Text("Search Destination")
                                                    .frame(width: 260, height: 60)
                                                    .foregroundColor(.black)
@@ -160,6 +161,7 @@ struct MainHomeView: View {
                         .padding(.bottom, 50)
                     }
                 }
+               
                 .edgesIgnoringSafeArea(.bottom)
             }
             .navigationBarBackButtonHidden(true)

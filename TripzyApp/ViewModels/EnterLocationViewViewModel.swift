@@ -155,21 +155,21 @@ class EnterLocationViewViewModel: ObservableObject {
             }
         }
     }
-    
+
     func saveToCoreData(context: NSManagedObjectContext) {
-        let newRide = BookingEntity(context: context)
-        newRide.startLocation = startLocation
-        newRide.endLocation = endLocation
-        newRide.fareAmount = fareAmount ?? 0.0
-        newRide.timeStamp = Date()
-        
-        do {
-            try context.save()
-            print("Saved ride to Core Data")
-        } catch {
-            print("Failed to save: \(error.localizedDescription)")
+            let newRide = BookingEntity(context: context)
+            newRide.startLocation = startLocation
+            newRide.endLocation = endLocation
+            newRide.fareAmount = fareAmount ?? 0.0
+            newRide.timeStamp = Date()
+            
+            do {
+                try context.save()
+                print("Saved ride to Core Data")
+            } catch {
+                print("Failed to save: \(error.localizedDescription)")
+            }
         }
-    }
 
 }
 

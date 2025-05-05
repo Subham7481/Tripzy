@@ -37,9 +37,7 @@ struct RideTrackingView: View {
             //See Details Button
             
             NavigationLink(destination: UserHistoryView()){
-                Button("See Details") {
-                    
-                }
+                Text("See Details")
                 .frame(width: 160, height: 50)
                 .background(Color.green)
                 .foregroundColor(.white)

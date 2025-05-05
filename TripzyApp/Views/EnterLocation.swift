@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct EnterLocation: View {
-    @StateObject var viewModel = EnterLocationViewViewModel()
+    @EnvironmentObject var viewModel: EnterLocationViewViewModel
     @State private var isNavigating = false
     @FocusState private var focusedField: Field?
 
@@ -111,7 +111,7 @@ struct EnterLocation: View {
                 .cornerRadius(15)
                 .padding()
 
-                NavigationLink("", destination: SelectTransport(), isActive: $isNavigating)
+            NavigationLink("", destination: SelectTransport().environmentObject(viewModel), isActive: $isNavigating)
                     .hidden()
 
                 if let amount = viewModel.fareAmount {
@@ -128,4 +128,5 @@ struct EnterLocation: View {
 
 #Preview {
     EnterLocation()
+        .environmentObject(EnterLocationViewViewModel())
 }

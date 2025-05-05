@@ -11,6 +11,10 @@ import CoreData
 class CoreDataManager {
     static let shared = CoreDataManager()
     let persistentContainer: NSPersistentContainer
+    
+    var context: NSManagedObjectContext {
+            return persistentContainer.viewContext
+    }
 
     private init() {
         persistentContainer = NSPersistentContainer(name: "Model") // Use your actual Core Data model name
@@ -47,6 +51,18 @@ class CoreDataManager {
             return try context.fetch(request)
         } catch {
             print("Failed to fetch drivers: \(error)")
+            return []
+        }
+    }
+    
+    func fetchRideDetails() -> [BookingEntity] {
+        let context = persistentContainer.viewContext
+        let request: NSFetchRequest<BookingEntity> = BookingEntity.fetchRequest()
+        
+        do{
+            return try context.fetch(request)
+        } catch {
+            print("Failed to fetch booking details: \(error)")
             return []
         }
     }

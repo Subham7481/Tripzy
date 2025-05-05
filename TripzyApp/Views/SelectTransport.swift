@@ -44,6 +44,7 @@ struct SelectTransport: View {
 }
 
 struct TransportOptionView: View {
+    @EnvironmentObject var viewModel : EnterLocationViewViewModel
     var transport: [String: String]
     
     var body: some View {
@@ -58,7 +59,7 @@ struct TransportOptionView: View {
                     )
                 
                 VStack {
-                    NavigationLink(destination: PaymentView(selectedImage: transport["image"]!)) {
+                    NavigationLink(destination: PaymentView(selectedImage: transport["image"]!).environmentObject(viewModel)) {
                         Image(transport["image"]!)
                             .resizable()
                             .scaledToFit()
@@ -77,4 +78,5 @@ struct TransportOptionView: View {
 
 #Preview {
     SelectTransport()
+        .environmentObject(EnterLocationViewViewModel())
 }

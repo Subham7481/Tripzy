@@ -48,9 +48,22 @@
 		0FEEAA642DB0162D0074CCA9 /* DriverEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DriverEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0FE519892DC922F2005484A3 /* Exceptions for "TripzyApp" folder in "TripzyApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0FBD9C642CC6C74A00920C1C /* TripzyApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0FBD9C672CC6C74A00920C1C /* TripzyApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0FE519892DC922F2005484A3 /* Exceptions for "TripzyApp" folder in "TripzyApp" target */,
+			);
 			path = TripzyApp;
 			sourceTree = "<group>";
 		};
@@ -451,8 +464,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TripzyApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TripzyApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to track rides even in background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby rides.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -483,8 +499,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TripzyApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TripzyApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to track rides even in background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby rides.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
