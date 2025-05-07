@@ -35,17 +35,25 @@ struct UserHistoryView: View {
                     .stroke(Color.green, lineWidth: 1)
             )
             .padding(.top, 10)
-
+            
             List {
                 switch selectedSubButton {
                 case 0:
-                    ForEach(viewModel.upcomingRides, id: \.self) { ride in
-                        BookingRowView(booking: ride)
+                    if viewModel.upcomingRides.isEmpty{
+                        Text("No upcoming rides.")
+                    } else {
+                        ForEach(viewModel.upcomingRides, id: \.self) { ride in
+                            BookingRowView(booking: ride)
+                        }
                     }
                 
                 case 1:
-                    ForEach(viewModel.completedRides, id: \.self) { ride in
-                        BookingRowView(booking: ride)
+                    if viewModel.completedRides.isEmpty{
+                        Text("No completed rides.")
+                    } else {
+                        ForEach(viewModel.completedRides, id: \.self) { ride in
+                            BookingRowView(booking: ride)
+                        }
                     }
                     
                 case 2:
@@ -63,7 +71,7 @@ struct UserHistoryView: View {
                 //            viewModel.assignRandomDrivers()
             }
         }
-        .padding(.bottom, 600)
+//        .padding(.bottom, 600)
     }
 
     private func subButton(index: Int, title: String) -> some View {
@@ -89,6 +97,9 @@ struct BookingRowView: View {
             Text("Booking ID: \(booking.id?.uuidString ?? "N/A")")
             Text("Date: \(formattedDate(booking.timeStamp))")
             Text("Driver: \(booking.driverName ?? "Not assigned")")
+            Text("Start Location: \(booking.startLocation ?? "Not fetched")")
+            Text("End Location: \(booking.endLocation ?? "Not fetched")")
+            Text("Paid Rent: \(booking.fareAmount)")
         }
         .padding(5)
     }
