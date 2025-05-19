@@ -14,8 +14,20 @@ Swift & SwiftUI – For building a smooth and modern UI
 Xcode – Development environment
 Firebase – Backend services (Authentication, Database, Storage)
 CoreData – Local data persistence
-📷 Screenshots
-🚀 Coming soon!
+📷 Preview
+<p align="center">
+  <img src="UIScreenshots/MainView.png" alt="Main View" width="250" height="500"/>
+  <img src="UIScreenshots/LoginView.png" alt="Login View" width="250" height="500"/>
+  <img src="UIScreenshots/SignUp.png" alt="Signup View" width="250" height="500"/>
+  <img src="UIScreenshots/HomeView.png" alt="Home View" width="250" height="500"/>
+  <img src="UIScreenshots/SideBarView.png" alt="Sidebar View" width="250" height="500"/>
+  <img src="UIScreenshots/MainView.png" alt="Main View" width="250" height="500"/>
+  <img src="UIScreenshots/SettingView.png" alt="Setting View" width="250" height="500"/>
+  <img src="UIScreenshots/SelectTransportView.png" alt="Select transport View" width="250" height="500"/>
+  <img src="UIScreenshots/PaymentView.png" alt="Payment View" width="250" height="500"/>
+  <img src="UIScreenshots/ConfirmRideView.png" alt="Confirm Ride View" width="250" height="500"/>
+  <img src="UIScreenshots/HistoryView.png" alt="History View" width="250" height="500"/>
+</p>
 
 🔧 Installation
 Clone the repository: git clone https://github.com/Subham7481/Tripzy.git
