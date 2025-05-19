@@ -63,7 +63,7 @@ struct ConfirmRideView: View {
             .cornerRadius(12)
             .padding()
             
-            NavigationLink(destination: RideTrackingView(), isActive: $navigateToRideTracking) {
+            NavigationLink(destination: HomeView(), isActive: $navigateToRideTracking) {
                 EmptyView()
             }
             .padding()

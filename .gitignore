@@ -64,3 +64,6 @@ fastlane/test_output
 # Firebase
 GoogleService-Info.plist
 
+# Ignore Xcode user data
+*.xcuserstate
+*.xcuserdatad/

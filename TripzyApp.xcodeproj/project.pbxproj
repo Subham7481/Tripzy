@@ -77,6 +77,11 @@
 			path = TripzyAppUITests;
 			sourceTree = "<group>";
 		};
+		0FE51BB82DDAE529005484A3 /* UIScreenshots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UIScreenshots;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +119,7 @@
 		0FBD9C5C2CC6C74A00920C1C = {
 			isa = PBXGroup;
 			children = (
+				0FE51BB82DDAE529005484A3 /* UIScreenshots */,
 				0FEEAA612DB0162D0074CCA9 /* BookingEntity+CoreDataClass.swift */,
 				0FEEAA622DB0162D0074CCA9 /* BookingEntity+CoreDataProperties.swift */,
 				0FEEAA632DB0162D0074CCA9 /* DriverEntity+CoreDataClass.swift */,
@@ -161,6 +167,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				0FBD9C672CC6C74A00920C1C /* TripzyApp */,
+				0FE51BB82DDAE529005484A3 /* UIScreenshots */,
 			);
 			name = TripzyApp;
 			packageProductDependencies = (
