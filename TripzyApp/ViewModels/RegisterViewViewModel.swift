@@ -40,7 +40,7 @@ class RegisterViewViewModel: ObservableObject{
             .setData(newUser.asDictionary()) { [weak self] error in
                 if let error = error {
                     self?.errorMessage = "Failed to save user data: \(error.localizedDescription)"
-                    print("Error storing user data: \(error.localizedDescription)")  // More detailed error logging
+                    print("Error storing user data: \(error.localizedDescription)")
                 } else {
                     self?.errorMessage = ""
                     print("User data saved successfully!")
